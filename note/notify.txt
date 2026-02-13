@@ -1,0 +1,91 @@
+<script>
+$(document).ready(function () {
+    var status = "<?php echo $_GET['status']; ?>";
+    var content = {};
+
+    if (status === 'success') {
+        content.message = 'Department added successfully!';
+        content.title = "Success";
+        content.icon = "fa fa-check-circle";
+        var state = "success"; // green color
+    }
+
+    $.notify(content, {
+        type: state,
+        placement: {
+            from: "top",
+            align: "right"
+        },
+        //url: "Add_Department.php",  // The URL you want to link to when the notification is clicked
+        //target: "_blank",  // Opens the link in a new tab (optional)
+        time: 1000,
+        delay: 10000, // Show for 5 seconds
+        animate: {
+            enter: 'animated fadeInDown',
+            exit: 'animated fadeOutUp'
+        },
+        template: '<div data-notify="container" class="col-xs-11 col-sm-4 alert alert-{0}" role="alert">' +
+            '<span data-notify="icon"></span> ' +
+            '<span data-notify="title">{1}</span> ' +
+            '<span data-notify="message">{2}</span>' +
+        '</div>'
+    });
+    // Clean up the URL (remove 'status' from the query string)
+    if (window.history.replaceState) {
+        const url = new URL(window.location);
+        url.searchParams.delete('status');
+        window.history.replaceState({}, document.title, url.pathname + url.search);
+    }
+});
+</script>
+
+
+
+
+
+  $(document).ready(function () {
+    var status = "<?php echo $_GET['status']; ?>"; // PHP to JS
+    var content = {};
+
+    if (status === 'success') {
+        var placementFrom = $("#notify_placement_from option:selected").val();
+        var placementAlign = $("#notify_placement_align option:selected").val();
+        var state = $("#notify_state option:selected").val();
+        var style = $("#notify_style option:selected").val();
+
+        content.message = 'Department added successfully!';
+        content.title = "Success";
+
+        // Add icon if "withicon" style is selected
+        if (style == "withicon") {
+            content.icon = "fa fa-bell";
+        } else {
+            content.icon = "none";
+        }
+
+        // Setting URL and target for redirection
+        //content.url = "Add_Department.php";
+        //content.target = "_blank"; // Opening in a new tab
+
+        // Notify display
+        $.notify(content, {
+            type: state,
+            placement: {
+                from: placementFrom,
+                align: placementAlign,
+            },
+            time: 1000,
+            delay: 5000, // Show the notification for 5 seconds
+            animate: {
+                enter: 'animated fadeInDown',
+                exit: 'animated fadeOutUp',
+            },
+        });
+
+        // Clean up the URL (remove 'status' from the query string)
+        if (window.history.replaceState) {
+            const url = new URL(window.location);
+            url.searchParams.delete('status');
+            window.history.replaceState({}, document.title, url.pathname + url.search);
+        }
+    }

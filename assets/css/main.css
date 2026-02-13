@@ -1,0 +1,74 @@
+.transparent-input {
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 10px;
+  color: white;
+  padding: 10px;
+}
+  .transparent-input::placeholder {
+    color: rgba(255, 255, 255, 0.7); /* White-ish placeholder */
+  }
+
+  .transparent-input:focus,
+  .transparent-input:hover {
+    background-color: transparent;
+    color: white;
+    border: 1px solid #fff;
+    box-shadow: none;
+    outline: none;
+  }
+
+/*  Add_subject (department dropdown) start */
+
+    .custom-select-box {
+      border: 1px solid #ccc;
+      padding: 6px 12px;
+      border-radius: 4px;
+      width: auto;
+      cursor: pointer;
+      position: relative;
+    }
+
+.custom-select-box::after {
+  content: "▼";
+  position: absolute;
+  right: 10px;
+  top: 12px;
+  font-size: 14px;
+  pointer-events: none;
+  font-weight: bold;
+}
+
+
+    .custom-dropdown {
+      position: absolute;
+      background: white;
+      border: 1px solid #ccc;
+      margin-top: 2px;
+      width: 100%;
+      z-index: 10;
+      display: none;
+      max-height: 150px;
+      overflow-y: auto;
+    }
+
+    .custom-dropdown div {
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+
+    .custom-dropdown div:hover {
+      background-color: #f1f1f1;
+    }
+
+    .selected-display {
+      display: inline-block;
+    }
+
+    .remove-last {
+      color: red;
+      font-weight: bold;
+      margin-left: 8px;
+      cursor: pointer;
+    }
+    /*  Add_subject (department dropdown) END*/
